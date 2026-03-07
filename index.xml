@@ -1,1 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CS 自学笔记 on CS Note</title><link>https://lzt0911.github.io/</link><description>Recent content in CS 自学笔记 on CS Note</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 06 Mar 2026 11:21:15 +0800</lastBuildDate><atom:link href="https://lzt0911.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>note</title><link>https://lzt0911.github.io/cs61b/note/</link><pubDate>Fri, 06 Mar 2026 11:21:15 +0800</pubDate><guid>https://lzt0911.github.io/cs61b/note/</guid><description>&lt;h1 id="note">note&lt;/h1></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CS 自学笔记 on CS Note</title><link>https://lzt0911.github.io/</link><description>Recent content in CS 自学笔记 on CS Note</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Fri, 06 Mar 2026 11:21:15 +0800</lastBuildDate><atom:link href="https://lzt0911.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>note</title><link>https://lzt0911.github.io/cs61b/note/</link><pubDate>Fri, 06 Mar 2026 11:21:15 +0800</pubDate><guid>https://lzt0911.github.io/cs61b/note/</guid><description>&lt;h1 id="lecture-1-intro-hello-world-java">Lecture 1 Intro, Hello World Java&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;hello world&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>All code in Java must be part of a class.&lt;/li>
+&lt;li>We delimit(界定) the beginning and end of segments of code with &lt;code>{ }&lt;/code>.&lt;/li>
+&lt;li>All statements in Java must end in a semi-colon(分号).&lt;/li>
+&lt;li>For code to run we need &lt;code>public static void main(String[] args)&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloNumbers&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> x; &lt;span style="color:#75715e">// Declare x exists and is an integer&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (x &lt;span style="color:#f92672">&amp;lt;&lt;/span> 10) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(x);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> x &lt;span style="color:#f92672">+&lt;/span> 1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Before Java variables can be used, they must be declared.&lt;/li>
+&lt;li>Java variables must have a specific type.&lt;/li>
+&lt;li>Java variable types can never change.&lt;/li>
+&lt;li>In Java, types are verified before the code runs! If there are type issues, the code will not compile.&lt;/li>
+&lt;li>python code can crash due to type errors when its running.&lt;/li>
+&lt;li>In Java, we can say &lt;code>System.out.println(5 + &amp;quot; &amp;quot;);&lt;/code>. But in Python, we can&amp;rsquo;t say &lt;code>print(5 + &amp;quot;horse&amp;quot;)&lt;/code>.
+&lt;ul>
+&lt;li>Consider these two Java statements: &lt;code>String h = 5 + &amp;quot;horse&amp;quot;;&lt;/code> and &lt;code>int h = 5 + &amp;quot;horse&amp;quot;;&lt;/code>.&lt;/li>
+&lt;li>The first one will succeed, the second will give a compiler error. Since Java is strongly typed, if you tell it &lt;code>h&lt;/code> is a string, it can concatenate(连接) the elements and give you a string. But when &lt;code>h&lt;/code> is an &lt;code>int&lt;/code>, it can&amp;rsquo;t concatenate a number and a string and give you a number.&lt;/li>
+&lt;li>Python doesn&amp;rsquo;t constrain the type, and it can&amp;rsquo;t make an assumption for what type you want. Is &lt;code>x = 5 + &amp;quot;horse&amp;quot;&lt;/code> supposed to be a number? A string? Python doesn&amp;rsquo;t know. So it errors.&lt;/li>
+&lt;li>In this case, &lt;code>System.out.println(5 + &amp;quot;horse&amp;quot;);&lt;/code>, Java interprets the arguments as a string concatentation, and prints out &amp;ldquo;5horse&amp;rdquo; as your result. Or, more usefully, &lt;code>System.out.println(5 + &amp;quot; &amp;quot;);&lt;/code> will print a space after your &amp;ldquo;5&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LargerDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">larger&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> x, &lt;span style="color:#66d9ef">int&lt;/span> y) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (x &lt;span style="color:#f92672">&amp;gt;&lt;/span> y) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> x;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> y;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(larger(5, &lt;span style="color:#f92672">-&lt;/span>10));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>To declare a function in Java, use &lt;code>public static&lt;/code> (仅限当前阶段).&lt;/li>
+&lt;li>All parameters of a function must have a type, and the function itself must have a return type.&lt;/li>
+&lt;li>All functions must be part of a class. In programming language terminology(术语), a function that is part of a class is called a &amp;ldquo;method&amp;rdquo;, so all functions in Java are methods.&lt;/li>
+&lt;li>The most common way to execute a Java program is to run it through a sequence of two programs. The first is the Java compiler, or &lt;code>javac&lt;/code>. The second is the Java interpreter, or &lt;code>java&lt;/code>.
+&lt;img src="https://lzt0911.github.io/images/cs61b/image-1.png" alt="alt text">
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ javac HelloWorld.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ java HelloWorld
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul></description></item></channel></rss>
