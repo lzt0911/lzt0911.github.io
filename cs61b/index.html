@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>CS61B | CS Note</title>
 <meta name="keywords" content="">
 <meta name="description" content="🎓 课程简介
@@ -18,17 +18,17 @@ gradescope
 
 📝 笔记列表">
 <meta name="author" content="">
-<link rel="canonical" href="https://lzt0911.github.io/cs61b/">
+<link rel="canonical" href="http://localhost:1313/cs61b/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lzt0911.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lzt0911.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lzt0911.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://lzt0911.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://lzt0911.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://lzt0911.github.io/cs61b/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://lzt0911.github.io/cs61b/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/cs61b/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/cs61b/">
 <noscript>
     <style>
         #theme-toggle,
@@ -80,39 +80,13 @@ gradescope
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://lzt0911.github.io/cs61b/">
-  <meta property="og:site_name" content="CS Note">
-  <meta property="og:title" content="CS61B">
-  <meta property="og:description" content="🎓 课程简介 这里是 CS61B: Data Structures（UC Berkeley, Spring 2021）的学习笔记。
-伯克利 CS61 系列的第二门课程，注重数据结构与算法的设计，同时让学生有机会接触上千行的工程代码，通过 Java 初步领会软件工程的思想。
-📌 课程资源 课程主页 Java Visualizer gradescope 📝 笔记列表">
-  <meta property="og:locale" content="zh-CN">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CS61B">
-<meta name="twitter:description" content="">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "CS61B",
-      "item": "https://lzt0911.github.io/cs61b/"
-    }
-  ]
-}
 </script>
 </head>
 <body class="list" id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lzt0911.github.io/" accesskey="h" title="CS Note (Alt + H)">CS Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CS Note (Alt + H)">CS Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -166,15 +140,15 @@ gradescope
     </h2>
   </header>
   <div class="entry-content">
-    <p>note</p>
+    <p>Lecture 1 Intro, Hello World Java public class HelloWorld { public static void main(String[] args) { System.out.println(&#34;hello world&#34;); } } All code in Java must be part of a class. We delimit(界定) the beginning and end of segments of code with { }. All statements in Java must end in a semi-colon(分号). For code to run we need public static void main(String[] args). public class HelloNumbers { public static void main(String[] args) { int x; // Declare x exists and is an integer x = 0; while (x &lt; 10) { System.out.println(x); x = x &#43; 1; } } } Before Java variables can be used, they must be declared. Java variables must have a specific type. Java variable types can never change. In Java, types are verified before the code runs! If there are type issues, the code will not compile. python code can crash due to type errors when its running. In Java, we can say System.out.println(5 &#43; &#34; &#34;);. But in Python, we can’t say print(5 &#43; &#34;horse&#34;). Consider these two Java statements: String h = 5 &#43; &#34;horse&#34;; and int h = 5 &#43; &#34;horse&#34;;. The first one will succeed, the second will give a compiler error. Since Java is strongly typed, if you tell it h is a string, it can concatenate(连接) the elements and give you a string. But when h is an int, it can’t concatenate a number and a string and give you a number. Python doesn’t constrain the type, and it can’t make an assumption for what type you want. Is x = 5 &#43; &#34;horse&#34; supposed to be a number? A string? Python doesn’t know. So it errors. In this case, System.out.println(5 &#43; &#34;horse&#34;);, Java interprets the arguments as a string concatentation, and prints out “5horse” as your result. Or, more usefully, System.out.println(5 &#43; &#34; &#34;); will print a space after your “5”. public class LargerDemo { public static int larger(int x, int y) { if (x &gt; y) { return x; } return y; } public static void main(String[] args) { System.out.println(larger(5, -10)); } } To declare a function in Java, use public static (仅限当前阶段). All parameters of a function must have a type, and the function itself must have a return type. All functions must be part of a class. In programming language terminology(术语), a function that is part of a class is called a “method”, so all functions in Java are methods. The most common way to execute a Java program is to run it through a sequence of two programs. The first is the Java compiler, or javac. The second is the Java interpreter, or java. $ javac HelloWorld.java $ java HelloWorld </p>
   </div>
   <footer class="entry-footer"><span title='2026-03-06 11:21:15 +0800 CST'>March 6, 2026</span></footer>
-  <a class="entry-link" aria-label="post link to note" href="https://lzt0911.github.io/cs61b/note/"></a>
+  <a class="entry-link" aria-label="post link to note" href="http://localhost:1313/cs61b/note/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://lzt0911.github.io/">CS Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">CS Note</a></span> · 
 
     <span>
         Powered by

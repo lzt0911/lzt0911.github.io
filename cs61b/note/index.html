@@ -1,24 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>note | CS Note</title>
 <meta name="keywords" content="">
-<meta name="description" content="note">
+<meta name="description" content="Lecture 1 Intro, Hello World Java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(&#34;hello world&#34;);
+    }
+}
+
+All code in Java must be part of a class.
+We delimit(界定) the beginning and end of segments of code with { }.
+All statements in Java must end in a semi-colon(分号).
+For code to run we need public static void main(String[] args).
+
+public class HelloNumbers {
+    public static void main(String[] args) {
+        int x; // Declare x exists and is an integer
+        x = 0;
+        while (x &lt; 10) {
+            System.out.println(x);
+            x = x &#43; 1;
+        }
+    }
+}
+
+Before Java variables can be used, they must be declared.
+Java variables must have a specific type.
+Java variable types can never change.
+In Java, types are verified before the code runs! If there are type issues, the code will not compile.
+python code can crash due to type errors when its running.
+In Java, we can say System.out.println(5 &#43; &quot; &quot;);. But in Python, we can&rsquo;t say print(5 &#43; &quot;horse&quot;).
+
+Consider these two Java statements: String h = 5 &#43; &quot;horse&quot;; and int h = 5 &#43; &quot;horse&quot;;.
+The first one will succeed, the second will give a compiler error. Since Java is strongly typed, if you tell it h is a string, it can concatenate(连接) the elements and give you a string. But when h is an int, it can&rsquo;t concatenate a number and a string and give you a number.
+Python doesn&rsquo;t constrain the type, and it can&rsquo;t make an assumption for what type you want. Is x = 5 &#43; &quot;horse&quot; supposed to be a number? A string? Python doesn&rsquo;t know. So it errors.
+In this case, System.out.println(5 &#43; &quot;horse&quot;);, Java interprets the arguments as a string concatentation, and prints out &ldquo;5horse&rdquo; as your result. Or, more usefully, System.out.println(5 &#43; &quot; &quot;); will print a space after your &ldquo;5&rdquo;.
+
+
+
+public class LargerDemo {
+    public static int larger(int x, int y) {
+        if (x &gt; y) {
+            return x;
+        }
+        return y;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(larger(5, -10));
+    }
+}
+
+To declare a function in Java, use public static (仅限当前阶段).
+All parameters of a function must have a type, and the function itself must have a return type.
+All functions must be part of a class. In programming language terminology(术语), a function that is part of a class is called a &ldquo;method&rdquo;, so all functions in Java are methods.
+The most common way to execute a Java program is to run it through a sequence of two programs. The first is the Java compiler, or javac. The second is the Java interpreter, or java.
+
+$ javac HelloWorld.java
+$ java HelloWorld
+
+">
 <meta name="author" content="">
-<link rel="canonical" href="https://lzt0911.github.io/cs61b/note/">
+<link rel="canonical" href="http://localhost:1313/cs61b/note/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lzt0911.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lzt0911.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lzt0911.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://lzt0911.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://lzt0911.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://lzt0911.github.io/cs61b/note/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/cs61b/note/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,75 +128,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://lzt0911.github.io/cs61b/note/">
-  <meta property="og:site_name" content="CS Note">
-  <meta property="og:title" content="note">
-  <meta property="og:description" content="note">
-  <meta property="og:locale" content="zh-CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="cs61b">
-    <meta property="article:published_time" content="2026-03-06T11:21:15+08:00">
-    <meta property="article:modified_time" content="2026-03-06T11:21:15+08:00">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="note">
-<meta name="twitter:description" content="note">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "CS61B",
-      "item": "https://lzt0911.github.io/cs61b/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "note",
-      "item": "https://lzt0911.github.io/cs61b/note/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "note",
-  "name": "note",
-  "description": "note",
-  "keywords": [
-    
-  ],
-  "articleBody": "note ",
-  "wordCount" : "1",
-  "inLanguage": "en",
-  "datePublished": "2026-03-06T11:21:15+08:00",
-  "dateModified": "2026-03-06T11:21:15+08:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://lzt0911.github.io/cs61b/note/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "CS Note",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://lzt0911.github.io/favicon.ico"
-    }
-  }
-}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lzt0911.github.io/" accesskey="h" title="CS Note (Alt + H)">CS Note</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CS Note (Alt + H)">CS Note</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -178,7 +174,65 @@
 
 </div>
   </header> 
-  <div class="post-content"><h1 id="note">note<a hidden class="anchor" aria-hidden="true" href="#note">#</a></h1>
+  <div class="post-content"><h1 id="lecture-1-intro-hello-world-java">Lecture 1 Intro, Hello World Java<a hidden class="anchor" aria-hidden="true" href="#lecture-1-intro-hello-world-java">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloWorld</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>All code in Java must be part of a class.</li>
+<li>We delimit(界定) the beginning and end of segments of code with <code>{ }</code>.</li>
+<li>All statements in Java must end in a semi-colon(分号).</li>
+<li>For code to run we need <code>public static void main(String[] args)</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloNumbers</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> x; <span style="color:#75715e">// Declare x exists and is an integer</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (x <span style="color:#f92672">&lt;</span> 10) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(x);
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Before Java variables can be used, they must be declared.</li>
+<li>Java variables must have a specific type.</li>
+<li>Java variable types can never change.</li>
+<li>In Java, types are verified before the code runs! If there are type issues, the code will not compile.</li>
+<li>python code can crash due to type errors when its running.</li>
+<li>In Java, we can say <code>System.out.println(5 + &quot; &quot;);</code>. But in Python, we can&rsquo;t say <code>print(5 + &quot;horse&quot;)</code>.
+<ul>
+<li>Consider these two Java statements: <code>String h = 5 + &quot;horse&quot;;</code> and <code>int h = 5 + &quot;horse&quot;;</code>.</li>
+<li>The first one will succeed, the second will give a compiler error. Since Java is strongly typed, if you tell it <code>h</code> is a string, it can concatenate(连接) the elements and give you a string. But when <code>h</code> is an <code>int</code>, it can&rsquo;t concatenate a number and a string and give you a number.</li>
+<li>Python doesn&rsquo;t constrain the type, and it can&rsquo;t make an assumption for what type you want. Is <code>x = 5 + &quot;horse&quot;</code> supposed to be a number? A string? Python doesn&rsquo;t know. So it errors.</li>
+<li>In this case, <code>System.out.println(5 + &quot;horse&quot;);</code>, Java interprets the arguments as a string concatentation, and prints out &ldquo;5horse&rdquo; as your result. Or, more usefully, <code>System.out.println(5 + &quot; &quot;);</code> will print a space after your &ldquo;5&rdquo;.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LargerDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">larger</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">&gt;</span> y) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(larger(5, <span style="color:#f92672">-</span>10));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>To declare a function in Java, use <code>public static</code> (仅限当前阶段).</li>
+<li>All parameters of a function must have a type, and the function itself must have a return type.</li>
+<li>All functions must be part of a class. In programming language terminology(术语), a function that is part of a class is called a &ldquo;method&rdquo;, so all functions in Java are methods.</li>
+<li>The most common way to execute a Java program is to run it through a sequence of two programs. The first is the Java compiler, or <code>javac</code>. The second is the Java interpreter, or <code>java</code>.
+<img alt="alt text" loading="lazy" src="/images/cs61b/image-1.png">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ javac HelloWorld.java
+</span></span><span style="display:flex;"><span>$ java HelloWorld
+</span></span></code></pre></div></li>
+</ul>
 
 
   </div>
@@ -191,7 +245,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://lzt0911.github.io/">CS Note</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">CS Note</a></span> · 
 
     <span>
         Powered by
