@@ -52,7 +52,7 @@
 &lt;li>All parameters of a function must have a type, and the function itself must have a return type.&lt;/li>
 &lt;li>All functions must be part of a class. In programming language terminology(术语), a function that is part of a class is called a &amp;ldquo;method&amp;rdquo;, so all functions in Java are methods.&lt;/li>
 &lt;li>The most common way to execute a Java program is to run it through a sequence of two programs. The first is the Java compiler, or &lt;code>javac&lt;/code>. The second is the Java interpreter, or &lt;code>java&lt;/code>.
-&lt;img src="https://lzt0911.github.io/images/cs61b/image-1.png" alt="alt text">
+&lt;img src="https://lzt0911.github.io/images/CS61B/image-1.png" alt="alt text">
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ javac HelloWorld.java
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ java HelloWorld
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
