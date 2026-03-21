@@ -218,4 +218,196 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sum);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="lecture-3-testing">Lecture 3 Testing&lt;/h1>
+&lt;h2 id="ad-hoc-testing-vs-juit">Ad Hoc Testing vs. JUit&lt;/h2>
+&lt;ul>
+&lt;li>临时测试&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/** Tests the Sort class. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestSort&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.sort method. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testSort&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sort.&lt;span style="color:#a6e22e">sort&lt;/span>(input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>java.&lt;span style="color:#a6e22e">util&lt;/span>.&lt;span style="color:#a6e22e">Arrays&lt;/span>.&lt;span style="color:#a6e22e">equals&lt;/span>(input, expected)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Error! There seems to be a problem with Sort.sort.&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> input.&lt;span style="color:#a6e22e">length&lt;/span>; i &lt;span style="color:#f92672">+=&lt;/span> 1) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>input&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>.&lt;span style="color:#a6e22e">equals&lt;/span>(expected&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Mismatch in position &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> i &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;, expected: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> expected&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;, but got: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> input&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> testSort();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>JUnit&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/** Tests the Sort class. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestSort&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.sort method. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testSort&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sort.&lt;span style="color:#a6e22e">sort&lt;/span>(input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> org.&lt;span style="color:#a6e22e">junit&lt;/span>.&lt;span style="color:#a6e22e">Assert&lt;/span>.&lt;span style="color:#a6e22e">assertArrayEquals&lt;/span>(expected, input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> testSort();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="selection-sort">Selection Sort&lt;/h2>
+&lt;ul>
+&lt;li>Selection sorting a list of N items:
+&lt;ul>
+&lt;li>Find the smallest item.&lt;/li>
+&lt;li>Move it to the front.&lt;/li>
+&lt;li>Selection sort the remaining N-1 items (without touching front item).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Sort&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Sorts strings destructively. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">sort&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> x) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sort(x, 0);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Sorts x starting at position start. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">sort&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> x, &lt;span style="color:#66d9ef">int&lt;/span> start) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (start &lt;span style="color:#f92672">==&lt;/span> x.&lt;span style="color:#a6e22e">length&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Find the smallest item.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> smallestIndex &lt;span style="color:#f92672">=&lt;/span> findSmallest(x, start);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Move it to the front.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> swap(x, start, smallestIndex);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Selection sort the remaining N-1 items (without touching front item).&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sort(x, start &lt;span style="color:#f92672">+&lt;/span> 1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Swap item a with b. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">swap&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> x, &lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String temp &lt;span style="color:#f92672">=&lt;/span> x&lt;span style="color:#f92672">[&lt;/span>a&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x&lt;span style="color:#f92672">[&lt;/span>a&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> x&lt;span style="color:#f92672">[&lt;/span>b&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x&lt;span style="color:#f92672">[&lt;/span>b&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> temp;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Return the index of smallest String in x. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">findSmallest&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> x, &lt;span style="color:#66d9ef">int&lt;/span> start) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> smallextIndex &lt;span style="color:#f92672">=&lt;/span> start;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> start; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> x.&lt;span style="color:#a6e22e">length&lt;/span>; i &lt;span style="color:#f92672">+=&lt;/span> 1) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (x&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>.&lt;span style="color:#a6e22e">compareTo&lt;/span>(x&lt;span style="color:#f92672">[&lt;/span>smallextIndex&lt;span style="color:#f92672">]&lt;/span>) &lt;span style="color:#f92672">&amp;lt;&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> smallextIndex &lt;span style="color:#f92672">=&lt;/span> i;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> smallextIndex;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/** Tests the Sort class. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestSort&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.sort method. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testSort&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sort.&lt;span style="color:#a6e22e">sort&lt;/span>(input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> org.&lt;span style="color:#a6e22e">junit&lt;/span>.&lt;span style="color:#a6e22e">Assert&lt;/span>.&lt;span style="color:#a6e22e">assertArrayEquals&lt;/span>(expected, input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.findSmallest method */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testFindSmallest&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> actual &lt;span style="color:#f92672">=&lt;/span> Sort.&lt;span style="color:#a6e22e">findSmallest&lt;/span>(input, 0);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> org.&lt;span style="color:#a6e22e">junit&lt;/span>.&lt;span style="color:#a6e22e">Assert&lt;/span>.&lt;span style="color:#a6e22e">assertEquals&lt;/span>(expected, actual);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input2 &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;there&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;are&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;many&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;pigs&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> expected2 &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> actual2 &lt;span style="color:#f92672">=&lt;/span> Sort.&lt;span style="color:#a6e22e">findSmallest&lt;/span>(input2, 2);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> org.&lt;span style="color:#a6e22e">junit&lt;/span>.&lt;span style="color:#a6e22e">Assert&lt;/span>.&lt;span style="color:#a6e22e">assertEquals&lt;/span>(expected2, actual2);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.swap method */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testSwap&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> b &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sort.&lt;span style="color:#a6e22e">swap&lt;/span>(input, a, b);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> org.&lt;span style="color:#a6e22e">junit&lt;/span>.&lt;span style="color:#a6e22e">Assert&lt;/span>.&lt;span style="color:#a6e22e">assertArrayEquals&lt;/span>(expected, input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> testFindSmallest();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> testSwap();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> testSort();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="simpler-junit-tests">Simpler JUnit Tests&lt;/h2>
+&lt;ul>
+&lt;li>Annotate(注释) each test with &lt;code>@org.junit.Test&lt;/code>.&lt;/li>
+&lt;li>Change all test methods to non-static.&lt;/li>
+&lt;li>Remove &lt;code>main&lt;/code> method from the &lt;code>TestSort&lt;/code> class.&lt;/li>
+&lt;li>Use a JUnit runner to run all tests.&lt;/li>
+&lt;li>To avoid type out the name of the library repeatedly, we&amp;rsquo;ll start every test file with &lt;code>import org.junit.Test;&lt;/code> and &lt;code>import static org.junit.Assert.*;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.junit.Test;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import static&lt;/span> org.junit.Assert.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/** Tests the Sort class. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestSort&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.sort method. */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testSort&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sort.&lt;span style="color:#a6e22e">sort&lt;/span>(input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertArrayEquals(expected, input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.findSmallest method */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testFindSmallest&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> actual &lt;span style="color:#f92672">=&lt;/span> Sort.&lt;span style="color:#a6e22e">findSmallest&lt;/span>(input, 0);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> org.&lt;span style="color:#a6e22e">junit&lt;/span>.&lt;span style="color:#a6e22e">Assert&lt;/span>.&lt;span style="color:#a6e22e">assertEquals&lt;/span>(expected, actual);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input2 &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;there&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;are&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;many&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;pigs&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> expected2 &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> actual2 &lt;span style="color:#f92672">=&lt;/span> Sort.&lt;span style="color:#a6e22e">findSmallest&lt;/span>(input2, 2);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertEquals(expected2, actual2);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/** Test the Sort.swap method */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testSwap&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> input &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> b &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> expected &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;an&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;have&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;i&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;egg&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sort.&lt;span style="color:#a6e22e">swap&lt;/span>(input, a, b);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertArrayEquals(expected, input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
