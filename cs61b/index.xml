@@ -410,4 +410,37 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertArrayEquals(expected, input);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="lecture-4-references-recursion-and-lists">Lecture 4 References, Recursion, and Lists&lt;/h1>
+&lt;h2 id="primitive-types">Primitive Types&lt;/h2>
+&lt;ul>
+&lt;li>Computer stores information in &amp;ldquo;memory&amp;rdquo;.
+&lt;ul>
+&lt;li>Information is stored in memory as a sequence of ones and zeros.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Each Java type has a different way to interpret the bits.
+&lt;ul>
+&lt;li>8 primitive types in Java: &lt;code>byte&lt;/code>, &lt;code>short&lt;/code>, &lt;code>int&lt;/code>, &lt;code>long&lt;/code>, &lt;code>float&lt;/code>, &lt;code>double&lt;/code>, &lt;code>boolean&lt;/code>, &lt;code>char&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>When you declare a variable of a certain type in Java:
+&lt;ul>
+&lt;li>Your computer sets aside exactly enough bits to hold a thing of that type.
+&lt;ul>
+&lt;li>Example: Declaring an &lt;code>int&lt;/code> sets aside a &amp;ldquo;box&amp;rdquo; of 32 bits.&lt;/li>
+&lt;li>Example: Declaring a &lt;code>double&lt;/code> sets aside a &amp;ldquo;box&amp;rdquo; of 64 bits.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Java creates an internal table that maps each variable name to a location.&lt;/li>
+&lt;li>Java provides no way for you to know the location of the box.&lt;/li>
+&lt;li>Java does NOT write anything into the reserved boxes. In other words, there are no default values.
+&lt;ul>
+&lt;li>For safety, Java will not let access a variable that is unintialized.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://lzt0911.github.io/images/CS61B/image-2.png" alt="alt text">
+&lt;img src="https://lzt0911.github.io/images/CS61B/image-3.png" alt="alt text">
+&lt;img src="https://lzt0911.github.io/images/CS61B/image-4.png" alt="alt text">&lt;/p></description></item></channel></rss>
