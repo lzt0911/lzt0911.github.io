@@ -459,4 +459,273 @@
 &lt;/ul>
 &lt;p>&lt;img src="https://lzt0911.github.io/images/CS61B/image-2.png" alt="alt text">
 &lt;img src="https://lzt0911.github.io/images/CS61B/image-3.png" alt="alt text">
-&lt;img src="https://lzt0911.github.io/images/CS61B/image-4.png" alt="alt text">&lt;/p></description></item></channel></rss>
+&lt;img src="https://lzt0911.github.io/images/CS61B/image-4.png" alt="alt text">&lt;/p></description></item><item><title/><link>https://lzt0911.github.io/cs50_ai/note/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lzt0911.github.io/cs50_ai/note/</guid><description>&lt;h1 id="lecture-0">Lecture 0&lt;/h1>
+&lt;h2 id="artificial-intelligence">Artificial Intelligence&lt;/h2>
+&lt;ul>
+&lt;li>Artificial Intelligence (AI) covers a range of techniques that make computers exhibit behavior that appears intelligent or sentient (计算机能够展现出看似具有感知能力的行为).&lt;/li>
+&lt;li>本课程会围绕以下几个核心主题展开：
+&lt;ul>
+&lt;li>Search: 找到问题的解决方案&lt;/li>
+&lt;li>Knowledge: 表示信息并从中推理&lt;/li>
+&lt;li>Uncertainty: 用概率处理不确定事件&lt;/li>
+&lt;li>Optimization: 不仅找到可行解，还要找到更优解或最优解&lt;/li>
+&lt;li>Learning: 从数据和经验中改进表现&lt;/li>
+&lt;li>Neural Networks (神经网络): 模仿大脑结构的程序&lt;/li>
+&lt;li>Language: 处理人类自然语言&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="search">Search&lt;/h2>
+&lt;ul>
+&lt;li>Search problem 指的是，给定一个初始状态和一个目标状态，智能体需要找到从前者到后者的解。&lt;/li>
+&lt;li>导航应用时典型的搜索问题：输入当前位置和目标地点，算法输出一条建议路径。&lt;/li>
+&lt;li>15 puzzle 也是搜索问题：目标是在合法移动下，把当前乱序拼图变成目标排列。&lt;/li>
+&lt;/ul>
+&lt;h3 id="search-problem-的基本组成">Search Problem 的基本组成&lt;/h3>
+&lt;ul>
+&lt;li>Agent (智能体): 能感知环境并对环境采取行动的实体。
+&lt;ul>
+&lt;li>在导航应用中，智能体可以理解为代表汽车的程序。&lt;/li>
+&lt;li>在 15 puzzle 中，智能体可以理解为负责决定下一步如何移动方块的求解系统。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>State (状态): 智能体在环境中的一种配置，也就是当前局面。
+&lt;ul>
+&lt;li>在 15 puzzle 中，一个状态就是棋盘上所有数字的一种排列方式。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Initial State (初始状态): 搜索开始时的状态。
+&lt;ul>
+&lt;li>在导航应用中，就是初始位置。&lt;/li>
+&lt;li>在 15 puzzle 中，就是初始的乱序拼图。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Actions (动作): 在某个状态下可执行的动作集合。更精确的说，Actions 是一个函数，输入状态 s，输出在该状态下所有可执行动作。
+&lt;ul>
+&lt;li>在 15 puzzle 中，就是哪些数字可以滑入空格。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Transition Model (状态转移模型): 描述在某个状态下执行某个动作后会得到什么新状态。形式上可写为 Results(s, a)。
+&lt;ul>
+&lt;li>在 15 puzzle 中，移动一个方块后会得到新的期盼配置。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>State Space (状态空间): 从初始状态出发，通过任意合法动作序列所能到达的所有状态的集合。
+&lt;ul>
+&lt;li>它可以看做一个有向图：节点是状态，边是动作。&lt;/li>
+&lt;li>在 15 puzzle 中，就是所有合法的拼图排列。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Goal Test (目标检测): 判断当前状态是否已经是目标状态。
+&lt;ul>
+&lt;li>在导航应用中，就是判断当前位置是否已经到达目的地。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Path Cost (路径代价): 与一条路径对应的数值代价。
+&lt;ul>
+&lt;li>在导航应用中，路径代价可以使时间、距离或油耗。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="solving-search-problems">Solving Search Problems&lt;/h2>
+&lt;ul>
+&lt;li>Solution: 从初始状态到目标状态的一系列动作。&lt;/li>
+&lt;li>Optimal Solution (最优解): 在所有解中，路径代价最低的那个解。&lt;/li>
+&lt;/ul>
+&lt;h3 id="node">Node&lt;/h3>
+&lt;ul>
+&lt;li>Node 是搜索算法中的核心数据结构，通常包含：
+&lt;ul>
+&lt;li>当前状态 (state)&lt;/li>
+&lt;li>父节点 (parent node)&lt;/li>
+&lt;li>从父节点到当期节点的动作 (action)&lt;/li>
+&lt;li>从初始状态到当前节点的路径代价 (path cost)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>节点之所以重要，是因为它不仅记录当前在哪里，也记录了“怎么走到这里”。因此当找到目标节点，可以沿着 parent 反向追溯到完整解。&lt;/li>
+&lt;/ul>
+&lt;h3 id="搜索算法的通用框架">搜索算法的通用框架&lt;/h3>
+&lt;ul>
+&lt;li>Frontier: 下一步准备考虑的节点集合。&lt;/li>
+&lt;li>Explored Set: 已经扩展过的状态集合，用来避免重复搜索。&lt;/li>
+&lt;li>方法：
+&lt;ul>
+&lt;li>初始时：
+&lt;ul>
+&lt;li>frontier 中包含初始状态对应的节点&lt;/li>
+&lt;li>explored set 为空&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>然后重复执行：
+&lt;ul>
+&lt;li>如果 frontier 为空，停止，说明问题无解&lt;/li>
+&lt;li>从 frontier 中移除一个节点作为当前考虑对象&lt;/li>
+&lt;li>如果该节点对应的是目标状态，返回 solution 并停止&lt;/li>
+&lt;li>否则：
+&lt;ul>
+&lt;li>将当前节点对应的状态加入 explored set&lt;/li>
+&lt;li>扩展该节点，得到所有后继节点，将即不存在于 frontier，也不存在于 explored set 的后继节点加入 frontier&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>不同搜索算法的差别，主要就在于 frontier 以什么顺序取出节点。&lt;/li>
+&lt;/ul>
+&lt;h3 id="depth-first-search-dfs-深度优先搜索">Depth-First Search (DFS, 深度优先搜索)&lt;/h3>
+&lt;ul>
+&lt;li>DFS 会先沿着某一条“分支”尽可能深入，直到无法继续，再回溯到上一个有未探索分支的节点，继续探索其他路径。&lt;/li>
+&lt;li>在 DFS 中，frontier 通常由栈管理。&lt;/li>
+&lt;li>优点：
+&lt;ul>
+&lt;li>如果运气很好，刚好走对分支，可能很快就找到解。&lt;/li>
+&lt;li>占用内存通常比 BFS 少。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>缺点：
+&lt;ul>
+&lt;li>不保证找到最优解。&lt;/li>
+&lt;li>在最坏情况下，可能会沿着错误的分支走得很深，最后几乎把整颗搜索树都搜完。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="breadth-first-search-bfs-广度优先搜索">Breadth-First Search (BFS, 广度优先搜索)&lt;/h3>
+&lt;ul>
+&lt;li>BFS 会先探索所有距离起点 1 步的状态，再探索所有距离起点 2 步的状态，以此类推。&lt;/li>
+&lt;li>在 BFS 中，frontier 通常由队列管理。&lt;/li>
+&lt;li>优点：
+&lt;ul>
+&lt;li>在每一步代价相同的前提下，BFS 保证能找到最短路径，也就是最优解。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>缺点：
+&lt;ul>
+&lt;li>速度可能较慢。&lt;/li>
+&lt;li>非常耗内存，因为需要保存整层的大量节点。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="greedy-best-first-search-贪心最佳优先搜索">Greedy Best-First Search (贪心最佳优先搜索)&lt;/h3>
+&lt;ul>
+&lt;li>DFS 和 BFS 都属于无信息搜索 (uninformed search), 即它们不会利用额外的领域知识。&lt;/li>
+&lt;li>如果我们拥有额外信息，例如“哪个方向看起来更接近目标”，就可以使用有信息搜索 (informed search).&lt;/li>
+&lt;li>Greedy Best-First Search 会优先扩展“看起来最接近目标”的节点，这个“接近程度”由函数 &lt;code>h(n)&lt;/code> 决定。&lt;/li>
+&lt;li>&lt;code>h(n)&lt;/code> 只是估计值，不一定准确，因此算法效果高度依赖函数的质量。&lt;/li>
+&lt;li>常见示例：Manhattan Distance (曼哈顿距离)
+&lt;ul>
+&lt;li>忽略障碍物，只计算从当前位置到目标位置需要多少次上下左右移动。&lt;/li>
+&lt;li>公式：&lt;code>h(n) = | x1 - x2| + |y1 - y2|&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>这种方法通常比盲目搜索更高效，但不保证最优解。&lt;/li>
+&lt;/ul>
+&lt;h3 id="a-search">A* Search&lt;/h3>
+&lt;ul>
+&lt;li>A* Search 可以看做是对 Greedy Best-First Search 的改进。&lt;/li>
+&lt;li>Greedy Best-First 只关心“离目标看起来还有多远”，而 A* 同时考虑：
+&lt;ul>
+&lt;li>&lt;code>g(n)&lt;/code>: 从起点走到当前节点的真实代价&lt;/li>
+&lt;li>&lt;code>h(n)&lt;/code>: 从当前节点到目标的估计代价&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>A* 使用下面的函数：&lt;code>f(n) = g(n) + h(n)&lt;/code>&lt;/li>
+&lt;li>A* 每次优先扩展 &lt;code>f(n)&lt;/code> 最小的节点。&lt;/li>
+&lt;li>如果 &lt;code>h(n)&lt;/code> 满足以下条件，A* 可以保证最优：
+&lt;ul>
+&lt;li>Admissible (可采纳): 永远不高估真实代价&lt;/li>
+&lt;li>Consistent (一致): 对任意节点 n 及其后继结点 n&amp;rsquo;，若步长代价为 c，则满足：&lt;code>h(n) &amp;lt;= h(n') + c&lt;/code>
+&lt;img src="https://lzt0911.github.io/images/CS50_AI/image-1.png" alt="alt text">&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="adversarial-search-对抗性搜索">Adversarial Search (对抗性搜索)&lt;/h2>
+&lt;ul>
+&lt;li>之前的搜索问题主要是“找到答案”；而在对抗性搜索中，系统面对的是一个试图让你失败的对手。&lt;/li>
+&lt;li>这类搜索常见于游戏，例如井字棋、国际象棋等。&lt;/li>
+&lt;/ul>
+&lt;h3 id="minimax">Minimax&lt;/h3>
+&lt;ul>
+&lt;li>Minimax 是对抗性搜索中的经典算法。它通常把终局分值表示为：
+&lt;ul>
+&lt;li>Maximizer 胜利：+1&lt;/li>
+&lt;li>Minimizer 胜利：-1&lt;/li>
+&lt;li>平局：0&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>基本思想：
+&lt;ul>
+&lt;li>轮到 Max 时，选择能让分数尽可能高的动作&lt;/li>
+&lt;li>轮到 Min 时，选择能让分数尽可能低的动作&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>核心假设：双方都会采取对自己最有利的最优策略。&lt;/li>
+&lt;/ul>
+&lt;h3 id="用井字棋表示-minimax">用井字棋表示 Minimax&lt;/h3>
+&lt;ul>
+&lt;li>S0: 初始状态，即空的 3*3 棋盘&lt;/li>
+&lt;li>Player(s): 给定状态 s, 返回轮到谁行动&lt;/li>
+&lt;li>Actions(s): 给定状态 s, 返回所有合法动作&lt;/li>
+&lt;li>Result(s, a): 给定状态 s 和动作 a, 返回执行动作后的新状态&lt;/li>
+&lt;li>Terminal(s): 判断该状态是否为终局&lt;/li>
+&lt;li>Utility(s): 若 s 是终局，返回其得分：-1、0 或 +1&lt;/li>
+&lt;li>算法流程：
+&lt;ul>
+&lt;li>从当前状态开始&lt;/li>
+&lt;li>模拟所有可能得下一步&lt;/li>
+&lt;li>对每一步继续模拟对手的所有可能反应&lt;/li>
+&lt;li>一直模拟到游戏结束（胜/负/平）&lt;/li>
+&lt;li>给每个终局赋值
+&lt;ul>
+&lt;li>你赢 -&amp;gt; +1&lt;/li>
+&lt;li>平局 -&amp;gt; 0&lt;/li>
+&lt;li>你输 -&amp;gt; -1&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>从底向上回溯：
+&lt;ul>
+&lt;li>你的回合 -&amp;gt; 选最大值&lt;/li>
+&lt;li>对手回合 -&amp;gt; 选最小值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>最终得到：当前状态下的最佳动作
+&lt;img src="https://lzt0911.github.io/images/CS50_AI/image-2.png" alt="alt text">&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在当前状态下，假设轮到 Max 行动，返回 Max 能保证获得的最高分&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Function Max-Value&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v &lt;span style="color:#f92672">=&lt;/span> -∞ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> Terminal&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> Utility&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> action in Actions&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v &lt;span style="color:#f92672">=&lt;/span> Max&lt;span style="color:#f92672">(&lt;/span>v, Min-Value&lt;span style="color:#f92672">(&lt;/span>Result&lt;span style="color:#f92672">(&lt;/span>state, action&lt;span style="color:#f92672">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> v
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在当前状态下，假设轮到 Min 行动，返回 Min 能保证获得的最低分&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Function Min-Value&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v &lt;span style="color:#f92672">=&lt;/span> ∞ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> Terminal&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> Utility&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> action in Actions&lt;span style="color:#f92672">(&lt;/span>state&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> v &lt;span style="color:#f92672">=&lt;/span> Min&lt;span style="color:#f92672">(&lt;/span>v, Max-Value&lt;span style="color:#f92672">(&lt;/span>Result&lt;span style="color:#f92672">(&lt;/span>state, action&lt;span style="color:#f92672">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="alpa-beta-pruning-剪枝">Alpa-Beta Pruning (剪枝)&lt;/h3>
+&lt;ul>
+&lt;li>Alpha-Beta Pruning 是 Minimax 的优化方法。&lt;/li>
+&lt;li>核心思想：如果某个分支已经可以确定“不可能比当前已知最佳选择更好”，就没有必要继续展开这个分支。这样不会改变最终结果，但可以显著减少需要搜索的节点数量。
+&lt;img src="https://lzt0911.github.io/images/CS50_AI/image-3.png" alt="alt text">&lt;/li>
+&lt;/ul>
+&lt;h3 id="depth-limited-minimax-有限深度极大极小算法">Depth-Limited MiniMax (有限深度极大极小算法)&lt;/h3>
+&lt;ul>
+&lt;li>Minimax 的问题在于，它通常需要把整颗游戏树一直展开到终局。对于井字棋，这样做是可行的；但对于国际象棋这类复杂游戏，完整搜索几乎不可能。因此实际应用中常常限制搜索深度。&lt;/li>
+&lt;li>Depth-Limited MiniMax 的做法是：
+&lt;ul>
+&lt;li>只向下搜索预先设定的层数，到达深度限制后，不再继续展开&lt;/li>
+&lt;li>改为使用评估函数 (evaluation function) 给当前局面打分&lt;/li>
+&lt;li>再按照 Minimax 的规则把这些估计值向上传播&lt;/li>
+&lt;li>最终选出当前最优动作&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>评估函数的质量非常关键&lt;/li>
+&lt;/ul></description></item></channel></rss>
