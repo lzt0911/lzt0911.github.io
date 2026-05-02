@@ -218,7 +218,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sum);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="disc02">Disc02&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="disc02">Disc02&lt;/h1>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 斐波那契数列&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">fib&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> n) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (n &lt;span style="color:#f92672">&amp;lt;=&lt;/span> 1) {
